@@ -1,0 +1,16 @@
+{
+  "name": "Testimony with Domonique",
+  "short_name": "Testimony",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#10091d",
+  "theme_color": "#120b1f",
+  "description": "A faith-centered testimony, prayer, and encouragement app guided by Domonique.",
+  "icons": [
+    {
+      "src": "/assets/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

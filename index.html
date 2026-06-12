@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#120b1f" />
+    <meta name="description" content="Testimony with Domonique is a faith-centered testimony, prayer, and encouragement app." />
+    <title>Testimony with Domonique</title>
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="hero" id="home">
+        <nav class="topbar" aria-label="Main navigation">
+          <a class="brand" href="#home" aria-label="Testimony with Domonique home">
+            <span class="brand-mark">T</span>
+            <span>
+              <strong>Testimony</strong>
+              <small>with Domonique</small>
+            </span>
+          </a>
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+          <div class="nav-links" id="navLinks">
+            <a href="#create">Create</a>
+            <a href="#vault">My Vault</a>
+            <a href="#community">Community</a>
+            <a href="#prayer">Prayer</a>
+          </div>
+        </nav>
+
+        <section class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Faith • Gratitude • Remembrance • Encouragement</p>
+            <h1>Your story. God’s glory.</h1>
+            <p class="lead">
+              A peaceful place to write, save, and share testimonies with Domonique gently guiding the words without changing the heart behind them.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#create">Start a testimony</a>
+              <a class="button ghost" href="#community">Read encouragement</a>
+            </div>
+          </div>
+
+          <aside class="domonique-card" aria-label="Domonique guide card">
+            <div class="halo"></div>
+            <div class="avatar" aria-hidden="true">D</div>
+            <h2>Domonique</h2>
+            <p>“Tell me what happened, and I will help you put it into words with faith, care, and truth.”</p>
+            <ul>
+              <li>Private testimony drafts</li>
+              <li>Prayer and praise reports</li>
+              <li>Church-ready encouragement</li>
+            </ul>
+          </aside>
+        </section>
+      </header>
+
+      <main>
+        <section class="section" id="create">
+          <div class="section-heading">
+            <p class="eyebrow">Create</p>
+            <h2>Write your testimony</h2>
+            <p>Use the guided fields below. Your entries save in this browser only until a real database is added.</p>
+          </div>
+
+          <div class="builder-grid">
+            <form class="card form-card" id="testimonyForm">
+              <label>
+                Testimony title
+                <input id="title" name="title" type="text" placeholder="Example: God brought me through" required />
+              </label>
+
+              <label>
+                What happened?
+                <textarea id="story" name="story" rows="5" placeholder="Tell the story from your heart..." required></textarea>
+              </label>
+
+              <label>
+                What did God teach you?
+                <textarea id="lesson" name="lesson" rows="4" placeholder="Write the lesson, blessing, growth, or encouragement..."></textarea>
+              </label>
+
+              <label>
+                Who is this for?
+                <select id="audience" name="audience">
+                  <option>Private</option>
+                  <option>Family</option>
+                  <option>Church</option>
+                  <option>Community</option>
+                </select>
+              </label>
+
+              <div class="form-actions">
+                <button class="button primary" type="submit">Save testimony</button>
+                <button class="button soft" type="button" id="generateDraft">Let Domonique help</button>
+              </div>
+            </form>
+
+            <article class="card output-card">
+              <div class="card-label">Domonique Draft</div>
+              <h3 id="draftTitle">Your testimony draft will appear here.</h3>
+              <p id="draftBody">
+                Fill in the form, then tap “Let Domonique help.” This app will shape your words into a testimony-style draft that you can copy, save, and continue editing.
+              </p>
+              <button class="button ghost full" id="copyDraft" type="button">Copy draft</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="section alt" id="vault">
+          <div class="section-heading row-heading">
+            <div>
+              <p class="eyebrow">My Vault</p>
+              <h2>Saved testimonies</h2>
+              <p>Stored locally on this device for this first-launch version.</p>
+            </div>
+            <button class="button danger" id="clearVault" type="button">Clear vault</button>
+          </div>
+          <div class="vault-list" id="vaultList"></div>
+        </section>
+
+        <section class="section" id="community">
+          <div class="section-heading">
+            <p class="eyebrow">Community Wall</p>
+            <h2>Encouragement for somebody who needs it</h2>
+            <p>Sample public-style testimonies for launch. Real posting and moderation can be added in the next version.</p>
+          </div>
+          <div class="community-grid" id="communityGrid"></div>
+        </section>
+
+        <section class="section alt" id="prayer">
+          <div class="section-heading">
+            <p class="eyebrow">Prayer</p>
+            <h2>Prayer and praise report</h2>
+            <p>Write a prayer note or praise report and keep it with your testimony vault.</p>
+          </div>
+          <form class="card prayer-card" id="prayerForm">
+            <label>
+              Prayer or praise note
+              <textarea id="prayerText" rows="4" placeholder="Lord, I thank You for..."></textarea>
+            </label>
+            <button class="button primary" type="submit">Save prayer note</button>
+          </form>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p><strong>Testimony with Domonique</strong> — Your story. God’s glory.</p>
+        <p>Built for faith, remembrance, encouragement, and love.</p>
+      </footer>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>
