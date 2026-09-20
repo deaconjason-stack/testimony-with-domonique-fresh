@@ -1,0 +1,35 @@
+name: APK Signing Helper
+
+on:
+  push:
+    branches:
+      - truckbraind-signing-helper
+    paths:
+      - ".github/workflows/apksig-helper.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-signer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download verified apksig-go release
+        shell: bash
+        run: |
+          set -euxo pipefail
+          curl -fL "https://github.com/agusibrahim/apksig-go/releases/download/v1.1.0/apksig-go_v1.1.0_linux_amd64.tar.gz" -o /tmp/apksig-go.tar.gz
+          echo "dda1ef085229514900a2ded2420d4f3e8e03a621cab21e922900269a53a205f7  /tmp/apksig-go.tar.gz" | sha256sum -c -
+          mkdir -p /tmp/apksig
+          tar -xzf /tmp/apksig-go.tar.gz -C /tmp/apksig
+          find /tmp/apksig -maxdepth 2 -type f -print
+          chmod +x /tmp/apksig/apksign /tmp/apksig/apksigverify || true
+          /tmp/apksig/apksign -h || true
+      - name: Upload signer
+        uses: actions/upload-artifact@v4
+        with:
+          name: apksig-go-linux-amd64-v1.1.0
+          path: /tmp/apksig/
+          if-no-files-found: error
+          retention-days: 1
